@@ -1,29 +1,25 @@
+/*
+ *  All rights reserved to @sorabh86 <ssorabh.ssharma@gmail.com>
+ */
 package io.github.sorabh86.spring.jdbc;
 
+import io.github.sorabh86.spring.jdbc.autowire.JdbcConfig;
 import io.github.sorabh86.spring.jdbc.dao.StudentDao;
 import io.github.sorabh86.spring.jdbc.entity.Student;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
 /**
  *
  * @author sorabh
  */
-public class DesignPatternExample1 {
-    private static JdbcTemplate jdbcTemp;
-    
+public class AutowireExample {
     public static void main(String[] args) {
-        
         System.out.println("-------------Starting JDBC Test Program...---------------");
         
-        ApplicationContext c = new ClassPathXmlApplicationContext("example1-jdbc-config.xml");
+        ApplicationContext c = new AnnotationConfigApplicationContext(JdbcConfig.class);
         
         StudentDao studentDao = c.getBean(StudentDao.class);
         
@@ -50,7 +46,9 @@ public class DesignPatternExample1 {
 //        System.out.println("Row 123: "+ studentDao.getStudent(123));
 
         // SELECT ALL COLUMN
-        System.out.println("All Students:"+ studentDao.getAllStudents());
+        List<Student> students = studentDao.getAllStudents();
+        for(Student s: students) {
+            System.out.println( s );
+        }
     }
-    
 }

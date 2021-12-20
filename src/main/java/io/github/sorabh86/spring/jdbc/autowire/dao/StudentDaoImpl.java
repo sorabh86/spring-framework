@@ -1,17 +1,23 @@
 /*
  *  All rights reserved to @sorabh86 <ssorabh.ssharma@gmail.com>
  */
-package io.github.sorabh86.spring.jdbc.dao;
+package io.github.sorabh86.spring.jdbc.autowire.dao;
 
+import io.github.sorabh86.spring.jdbc.dao.*;
 import io.github.sorabh86.spring.jdbc.entity.Student;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author sorabh
  */
+@Component("studentDao")
 public class StudentDaoImpl implements StudentDao {
+    
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
