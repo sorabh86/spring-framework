@@ -14,14 +14,14 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author sorabh
  */
-public class BasicTest {
+public class BasicExample {
     private static JdbcTemplate jdbcTemp;
     
     public static void main(String[] args) {
         
         System.out.println("-------------Starting JDBC Test Program...---------------");
         
-        ApplicationContext c = new ClassPathXmlApplicationContext("basic-jdbc-config.xml");
+        ApplicationContext c = new ClassPathXmlApplicationContext("basic-example-jdbc-config.xml");
 
         // Get JdbcTemplate
         jdbcTemp = c.getBean("jdbcTemplate", JdbcTemplate.class);
@@ -66,10 +66,10 @@ public class BasicTest {
 //        BasicTest.deleteColumn(125);
         
         // Select all columns
-        System.out.println("All Columns: " + BasicTest.selectAllColumn().toString());
+        System.out.println("All Columns: " + BasicExample.selectAllColumn().toString());
         
         // Select column
-        System.out.println("Columns id 1: " +BasicTest.selectColumn(1));
+        System.out.println("Columns id 1: " +BasicExample.selectColumn(1));
     }
     
     private static int insertColumn(int id, String name, String username, String password) {
