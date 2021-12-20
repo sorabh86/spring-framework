@@ -3,7 +3,6 @@
  */
 package io.github.sorabh86.spring.jdbc.autowire;
 
-import io.github.sorabh86.spring.jdbc.dao.StudentDaoImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
