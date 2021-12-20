@@ -7,7 +7,7 @@ We use org.springframework.jdbc.core.JdbcTemplate:
 1. JdbcTemplate required property dataSource=org.springframework.jdbc.datasource.DriverManagerDataSource, 
 And DriverManagerDataSource required properties:
 1. driverClassName : It is like mysql, mongo, oracle full class path to Driver.
-2. url : url pattern <domain>:<sub-domain>://<host>:<port>/<databasename>
+2. url : url pattern &lt;domain&gt;:&lt;sub-domain&gt;://&lt;host&gt;:&lt;port&gt;/&lt;databasename&gt;
 3. username : username of database
 4. password : password of database
 
