@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
  *
  * @author sorabh
  */
-public class Example1 {
+public class DesignPatternExample1 {
     private static JdbcTemplate jdbcTemp;
     
     public static void main(String[] args) {
