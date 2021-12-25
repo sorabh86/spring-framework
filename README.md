@@ -1,7 +1,8 @@
 # Table of Context
 - [Spring Core](src/main/java/io/github/sorabh86/spring/core)
 - [Spring JDBC](src/main/java/io/github/sorabh86/spring/jdbc)
-
+- [Spring ORM](src/main/java/io/github/sorabh86/spring/orm)
+- [Spring MVC](src/main/java/io/github/sorabh86/spring/mvc)
 
 ## Java Core 
 Reminds & Remember
