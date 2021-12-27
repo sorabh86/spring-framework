@@ -1,14 +1,14 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@page isELIgnored="false" %>
+<!DOCTYPE HTML>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>IndexPage</title>
+        <title>Index Page</title>
     </head>
     <body>
-        <h1>New Index</h1>
+        <h1>New Index Home Page</h1>
+        <p>Name: ${name}</p>
+        <p>Course: ${course}</p>
     </body>
 </html>
