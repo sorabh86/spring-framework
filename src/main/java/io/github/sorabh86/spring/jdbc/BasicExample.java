@@ -102,7 +102,7 @@ public class BasicExample {
         Map<String, Object> item = jdbcTemp.queryForObject(sql, new RowMapper<Map<String, Object>>() {
             @Override
             public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
-                HashMap<String, Object> row = new HashMap<>();
+                HashMap<String, Object> row = new HashMap<String, Object>();
                 row.put("id", rs.getInt(1));
                 row.put("name", rs.getString(2));
                 row.put("username", rs.getString(3));

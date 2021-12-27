@@ -1,3 +1,5 @@
+[< back](../../../../../../../../../../)
+
 # Spring MVC (web)
 It is a module of Spring Framework which is used to to build a web application. It is build on top of Servlet API. MVC stands for Model-View-Controller.
 
@@ -51,6 +53,9 @@ It is a module of Spring Framework which is used to to build a web application. 
 ```
 3. Configure View Resolver (spring-mvc-servlet.xml)
 ```xml
+<!-- enable anootation based Configuration -->
+<context:component-scan base-package="io.github.sorabh86.spring.mvc" />
+
 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" name="viewResolver">
     <property name="prefix" value="/WEB-INF/views/" />
     <property name="suffix" value=".jsp" />
