@@ -223,5 +223,143 @@ public void autoInjectToModel(Model model) {
 }
 ```
 
+## Redirect
+### 1. Tradition Redirect
+Using HttpServletResponse
+```java
+@RequestMapping("/login")
+public String login(HttpServletResponse response) throw IOException {
+    // exception handling
+    response.sendRedirect("/dashboard");
+    return "/login";
+}
+@RequestMapping("/dashboard")
+public String login() {
+    return "dashboard";
+}
+```
+### 2. Redirect Prefix
+```java
+@RequestMapping("/login")
+public String login() {
+    return "redirect:/dashboard";
+}
+@RequestMapping("/dashboard")
+public String login() {
+    return "dashboard";
+}
+```
+### 3. Redirect View
+```java
+import org.springframework.web.servlet.view.RedirectView;
+@RequestMapping("/login")
+public RedirectView login() {
+    RedirectView rv = new RedirectView();
+    rv.setUrl("dashboard"); // You can use http://yourdomain.com
+    return rv;
+}
+@RequestMapping("/dashboard")
+public String login() {
+    return "dashboard";
+}
+```
 
+## Handling Errors
+```java
+// Controller
+import org.springframework.validation.BindingResult;
+
+@RequestMapping(path="/processForm", method=RequestMethod.POST)
+public String processForm(@ModelAttribute("student") Student student, BindingResult result) {
+    if(result.hasErrors()) {
+        return "submit_form";
+    }
+
+    return "process_form";
+}
+```
+```jsp
+// View
+// It is required to include taglib library
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<div class="alert alert-error">
+    // Below line will print all errors occurred during binding student ModelAttribute
+    <form:errors path="student.*" />
+</div>
+```
+## Exception Handling for an controller
+```
+// @Controller
+
+@ExceptionHandler({NullPointerException.class, NumberFormatException.class})
+public String exceptionHandlerNull() {
+    return "null_page";
+}
+```
+### Central Exception handling for all controllers
+```
+// @ControllerAdvice
+
+@ExceptionHandler(value=Exception.class)
+public String exceptionHandlerNull() {
+    return "null_page";
+}
+```
+
+#### JSTL 
+```
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+```
+## File Uploading
+```
+<!-- Dependencies -->
+<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.4</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.11.0</version>
+</dependency>
+
+<!-- Bean declare -->
+<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+<!-- Controller -->
+@RequestMapping("uploadForm")
+public String uploadForm() {
+    return "uploadform";
+}
+@RequestMapping(path="doUpload", method=RequestMethod.POST)
+public String doUpload(@RequestParam("file") CommonsMultipartFile file, HttpSession s) {
+    //Pring file.getSize();
+    byte[] data = file.getBytes();
+    String path = s.getServletContext().getRealPath("/")+File.separator+"resources"+file.getOriginalFilename();
+    try {
+        FileOutputStream fos= new FileOutputStream(path);
+        fos.write(data);
+        fos.close();
+    } catch(IOException e) {e.printStackTrace();}
+    return "uploadsuccess";
+}
+
+<!-- View -->
+<form action="doUpload" method="post" enctype="multipart/form-data">
+    <label> Upload Image: <input type="file" name="file" /> </label>
+    <button type="submit">Submit</button>
+</form>
+</form>
+```
+
+## PathVariable
+Generally used for Rest API
+```
+@RequestMapping("/users/{id}")
+public String handler(@PathVariable("id") int id) {}
+```
 

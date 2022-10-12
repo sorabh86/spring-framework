@@ -1,0 +1,35 @@
+/*
+ All rights reserved to @sorabh86 <ssorabh.ssharma@gmail.com>
+*/
+/* 
+    Created on : 27-Dec-2021, 10:16:10 pm
+    Author     : sorabh
+*/
+
+html, body { margin: 0;padding: 0; font-family: Arial }
+* {margin: 0;padding: 0;box-sizing: border-box;}
+
+input[type=text], textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+}
+button, input[type=button] {padding:10px 20px;}
+
+.nav-bar {background: #11a;border-radius: 0 0 150px 60%;margin-bottom: 30px;}
+.nav-bar .container {display: flex;align-items: center;}
+.nav-bar ul {list-style: none;}
+.nav-bar ul li {display: inline-block;}
+.nav-bar ul li a {text-decoration: none;color:#fff;display: block;padding: 50px 30px;}
+.nav-bar ul li.active a {background:#fff;color:#000;}
+.nav-bar .logo {font-weight: bold;font-size: 32px;}
+.nav-bar ul li.logo a {padding: 30px;}
+.nav-bar .nav-list {margin-left:auto;}
+
+.container {width:1080px; margin: 0 auto;}
+
+.col {
+    width:90px;
+}
+
+.form-group {margin-bottom: 15px}
